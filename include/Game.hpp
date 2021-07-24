@@ -10,10 +10,13 @@ public:
     void handleEvents();
     void clean();
     bool running();
-protected:
 private:
 bool isRunning;
 int screenWidth,screenHeight;
 SDL_Renderer* gameRenderer;
 SDL_Window* gameWindow;
+
+SDL_Texture* tex;
+SDL_Rect src, dest;
+
 };
