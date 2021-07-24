@@ -28,16 +28,12 @@ bool Game::init(const char* title, int xpos, int ypos, int width,int height, int
 
     SDL_Surface* tempSurf = SDL_LoadBMP("res/graphics/character1.bmp");
     tex = SDL_CreateTextureFromSurface(gameRenderer, tempSurf);
-    if(tex == NULL)
-        printf("tex is null\n");
-    else
-        printf("tex is not null\n");
+    
     SDL_FreeSurface(tempSurf);
     SDL_QueryTexture(tex,NULL,NULL,&src.w,&src.h);
     src.x= dest.x = src.y = dest.y = 0;
     dest.w = src.w;
     dest.h = src.h;
-    printf("x: %d, y: %d, w: %d, h: %d\n",src.x,src.y,src.h,src.h);
 
     return isRunning;
 }
