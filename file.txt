@@ -1,0 +1,7 @@
+one
+<<<<<<< HEAD
+two
+three
+=======
+three (from second-branch)
+>>>>>>> second-branch
