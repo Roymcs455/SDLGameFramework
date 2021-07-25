@@ -25,28 +25,25 @@ bool Game::init(const char* title, int xpos, int ypos, int width,int height, int
             }
         }
     }
-
-    SDL_Surface* tempSurf = SDL_LoadBMP("res/graphics/character1.bmp");
-    tex = SDL_CreateTextureFromSurface(gameRenderer, tempSurf);
-    
-    SDL_FreeSurface(tempSurf);
-    SDL_QueryTexture(tex,NULL,NULL,&src.w,&src.h);
-    src.x= dest.x = src.y = dest.y = 0;
-    dest.w = src.w;
-    dest.h = src.h;
-
+    currentFrame = 0;
+    currentRow = 1;
+    texMan.load("res/graphics/char.png","animated",gameRenderer);
+    src = {0,0,16,16};
     return isRunning;
 }
 void Game::render()
 {
     SDL_RenderClear(gameRenderer);
-    SDL_RenderCopy(gameRenderer,tex,&src,&dest);
+
+    texMan.draw("animated",SDL_Rect({0,0,160,16}),gameRenderer);
+
+    texMan.drawFrame("animated",SDL_Rect({16,16,16,16}),currentRow,currentFrame,gameRenderer);
 
     SDL_RenderPresent(gameRenderer);
 }
 void Game::update()
 {
-
+    currentFrame = int((SDL_GetTicks()/100)%10);
 }
 void Game::handleEvents()
 {

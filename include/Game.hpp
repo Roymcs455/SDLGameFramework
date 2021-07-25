@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL2/SDL.h>
+#include "TextureManager.hpp"
 class Game 
 {
 public:
@@ -15,8 +16,9 @@ bool isRunning;
 int screenWidth,screenHeight;
 SDL_Renderer* gameRenderer;
 SDL_Window* gameWindow;
-
-SDL_Texture* tex;
+int currentFrame;
+int currentRow;
+TextureManager texMan;
 SDL_Rect src, dest;
 
 };
