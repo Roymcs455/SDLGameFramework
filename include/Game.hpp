@@ -18,7 +18,6 @@ SDL_Renderer* gameRenderer;
 SDL_Window* gameWindow;
 int currentFrame;
 int currentRow;
-TextureManager texMan;
 SDL_Rect src, dest;
 
 };

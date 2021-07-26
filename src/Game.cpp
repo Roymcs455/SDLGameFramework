@@ -27,7 +27,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width,int height, int
     }
     currentFrame = 0;
     currentRow = 1;
-    texMan.load("res/graphics/char.png","animated",gameRenderer);
+    TextureManager::Instance()->load("res/graphics/char.png","animated",gameRenderer);
     src = {0,0,16,16};
     return isRunning;
 }
@@ -35,9 +35,9 @@ void Game::render()
 {
     SDL_RenderClear(gameRenderer);
 
-    texMan.draw("animated",SDL_Rect({0,0,160,16}),gameRenderer);
+    TextureManager::Instance()->draw("animated",SDL_Rect({0,0,160,16}),gameRenderer);
 
-    texMan.drawFrame("animated",SDL_Rect({16,16,16,16}),currentRow,currentFrame,gameRenderer);
+    TextureManager::Instance()->drawFrame("animated",SDL_Rect({16,16,16,16}),currentRow,currentFrame,gameRenderer);
 
     SDL_RenderPresent(gameRenderer);
 }
