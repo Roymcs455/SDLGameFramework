@@ -28,22 +28,49 @@ bool Game::init(const char* title, int xpos, int ypos, int width,int height, int
     currentFrame = 0;
     currentRow = 1;
     TextureManager::Instance()->load("res/graphics/char.png","animated",gameRenderer);
-    src = {0,0,16,16};
+    //go.load(SDL_Rect({32,64,16,16}),"animated");
+    //plyr.load(SDL_Rect({32,32,16,16}),"animated");
+    GameObject* obj = new Player();
+    obj->load({0,0,16,16},"animated");
+    go1 = new Enemy();
+    go2 = new Enemy();
+    go3 = new Player();
+    go1->load({64,0,16,16},"animated");
+    go2->load({32,0,16,16},"animated");
+    go3->load({96,0,16,16},"animated");
+
+    gameObjects.push_back(obj);
+    gameObjects.push_back(go1);
+    gameObjects.push_back(go2);
+    gameObjects.push_back(go3);
+
     return isRunning;
 }
 void Game::render()
 {
     SDL_RenderClear(gameRenderer);
-
     TextureManager::Instance()->draw("animated",SDL_Rect({0,0,160,16}),gameRenderer);
-
     TextureManager::Instance()->drawFrame("animated",SDL_Rect({16,16,16,16}),currentRow,currentFrame,gameRenderer);
+
+    //go.draw(gameRenderer);
+    //plyr.draw(gameRenderer);
+
+    for(std::vector<GameObject*>::size_type i = 0; i != gameObjects.size(); i++)
+    {
+        gameObjects[i]->draw(gameRenderer);
+    }
 
     SDL_RenderPresent(gameRenderer);
 }
 void Game::update()
 {
     currentFrame = int((SDL_GetTicks()/100)%10);
+    //go.update();
+    //plyr.update();
+    for(std::vector<GameObject*>::size_type i = 0; i != gameObjects.size(); i++)
+    {
+        gameObjects[i]->update();
+    }
 }
 void Game::handleEvents()
 {

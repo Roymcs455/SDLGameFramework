@@ -13,4 +13,9 @@ void GameObject::draw(SDL_Renderer* pRenderer)
 void GameObject::update()
 {
     portrait.x++;
+    currentFrame= int((SDL_GetTicks()/100)%10);
+}
+void GameObject::clean()
+{
+    
 }

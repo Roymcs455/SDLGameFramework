@@ -5,19 +5,12 @@
 class GameObject
 {
 public:
-    void load(const SDL_Rect& rect, std::string texID);
-    void draw(SDL_Renderer* pRenderer);
-    void update();
-    void clean();
+    virtual void load(const SDL_Rect& rect, std::string texID);
+    virtual void draw(SDL_Renderer* pRenderer);
+    virtual void update();
+    virtual void clean();
 protected:
     std::string textureID;
     SDL_Rect portrait;
     int currentRow,currentFrame;
-
-};
-class Player: public GameObject
-{
-    void draw();
-    void update();
-    void clean();
 };

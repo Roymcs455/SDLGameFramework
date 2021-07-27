@@ -4,7 +4,9 @@
 
 class Player: public GameObject
 {
-    void draw();
+public:
+    void load(const SDL_Rect& rect, std::string textureID);
+    void draw(SDL_Renderer* pRenderer);
     void update();
     void clean();
 };
