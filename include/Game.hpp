@@ -10,25 +10,33 @@
 class Game 
 {
 public:
-    Game(){};
+    static Game* Instance()
+    {
+        if(gameInstance == NULL)
+        {
+            gameInstance = new Game();
+            return gameInstance;
+        }
+        return gameInstance;
+    }
     bool init(const char* title, int xpos, int ypos, int height,int width, int flags);
     void update();
     void render();
     void handleEvents();
     void clean();
     bool running();
+    SDL_Renderer* getRenderer() const {return gameRenderer;};
 private:
-bool isRunning;
-int screenWidth,screenHeight;
-SDL_Renderer* gameRenderer;
-SDL_Window* gameWindow;
-int currentFrame;
-int currentRow;
-GameObject* go1;
-GameObject* go2;
-GameObject* go3;
+    Game(){};
+    bool isRunning;
+    int screenWidth,screenHeight;
+    SDL_Renderer* gameRenderer;
+    SDL_Window* gameWindow;
+    int currentFrame;
+    int currentRow;
 
+    static Game* gameInstance;
 
-std::vector<GameObject*> gameObjects;
+    std::vector<GameObject*> gameObjects;
 
 };

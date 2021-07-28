@@ -1,16 +1,14 @@
 #pragma once
 #include <SDL2/SDL.h>
 #include <string>
-#include "TextureManager.hpp"
+#include "LoaderParams.hpp"
 class GameObject
 {
 public:
-    virtual void load(const SDL_Rect& rect, std::string texID);
-    virtual void draw(SDL_Renderer* pRenderer);
-    virtual void update();
-    virtual void clean();
+    virtual void draw() = 0;
+    virtual void update() = 0;
+    virtual void clean() = 0;
 protected:
-    std::string textureID;
-    SDL_Rect portrait;
-    int currentRow,currentFrame;
+    GameObject(const LoaderParams* pParams){}
+    virtual ~GameObject(){}
 };
