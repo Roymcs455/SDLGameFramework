@@ -4,8 +4,7 @@
 
 #include "TextureManager.hpp"
 #include "GameObject.hpp"
-#include "Player.hpp"
-#include "Enemy.hpp"
+#include "SDLGameObject.hpp"
 
 class Game 
 {

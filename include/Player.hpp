@@ -1,12 +1,12 @@
 #pragma once
-#include "GameObject.hpp"
+/* #include "SDLGameObject.hpp"
 
 
-class Player: public GameObject
+class Player: public SDLGameObject
 {
 public:
-    void load(const SDL_Rect& rect, std::string textureID);
-    void draw(SDL_Renderer* pRenderer);
-    void update();
-    void clean();
-};
+    Player(const LoaderParams* pParams);
+    virtual void draw();
+    virtual void update();
+    virtual void clean();
+}; */

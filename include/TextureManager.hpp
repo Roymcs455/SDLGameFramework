@@ -15,7 +15,8 @@ public:
             return instance;
         }
         return instance;
-    }
+    };
+    void queryTexture(std::string id, int& w, int& h);
     bool load(  std::string fileName, std::string id, SDL_Renderer* pRenderer);
     void draw(  std::string id, const SDL_Rect& rect,SDL_Renderer* pRenderer, 
                 SDL_RendererFlip flip = SDL_FLIP_NONE);

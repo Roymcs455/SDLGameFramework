@@ -28,25 +28,27 @@ bool Game::init(const char* title, int xpos, int ypos, int width,int height, int
     currentFrame = 0;
     currentRow = 1;
     TextureManager::Instance()->load("res/graphics/char.png","animated",gameRenderer);
+
+    gameObjects.push_back(new Player(new LoaderParams(SDL_Rect({0,32,16,16}),"animated")));
     return isRunning;
 }
 void Game::render()
 {
     SDL_RenderClear(gameRenderer);
-    TextureManager::Instance()->draw("animated",SDL_Rect({0,0,160,16}),gameRenderer);
+    /* TextureManager::Instance()->draw("animated",SDL_Rect({0,0,160,16}),gameRenderer);
     TextureManager::Instance()->drawFrame("animated",SDL_Rect({16,16,16,16}),currentRow,currentFrame,gameRenderer);
 
-
+ */
     for(std::vector<GameObject*>::size_type i = 0; i != gameObjects.size(); i++)
     {
-        gameObjects[i]->draw(gameRenderer);
+        gameObjects[i]->draw();
     }
 
     SDL_RenderPresent(gameRenderer);
 }
 void Game::update()
 {
-    currentFrame = int((SDL_GetTicks()/100)%10)
+    currentFrame = int((SDL_GetTicks()/100)%10);
     for(std::vector<GameObject*>::size_type i = 0; i != gameObjects.size(); i++)
     {
         gameObjects[i]->update();

@@ -11,6 +11,7 @@ int main(int argc, char** args)
             Game::Instance()->handleEvents();
             Game::Instance()->update();
             Game::Instance()->render();
+            SDL_Delay(10);
         }
     }
     else
